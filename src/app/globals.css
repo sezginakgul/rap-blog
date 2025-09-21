@@ -1,20 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@300;400;600;700&display=swap");
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #121212;
+  --font-sans: "Saira Condensed", Arial, Helvetica, sans-serif;
+  --primary-color: #f0e74d;
+  --color-primary: 240 231 77; /* #f0e74d in RGB format */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #121212;
     --foreground: #ededed;
   }
 }
@@ -22,5 +25,132 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
+.custom-swiper .swiper-pagination,
+.swiper-pagination-custom {
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.custom-swiper .swiper-pagination-bullet,
+.custom-bullet {
+  background: rgba(107, 107, 107, 0.7); /* grey for inactive bullets */
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  margin: 0 6px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.custom-swiper .swiper-pagination-bullet-active,
+.custom-bullet-active {
+  background: var(--primary-color) !important;
+  transform: scale(1.2);
+  width: 12px;
+  height: 12px;
+  box-shadow: 0 0 4px var(--primary-color);
+}
+
+.favorites-swiper .swiper-slide {
+  transition: all 0.3s ease;
+}
+
+.favorites-swiper .swiper-slide:hover {
+  transform: translateY(-5px);
+}
+
+/* Favorites pagination */
+.favorites-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.favorites-pagination .swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: #6b6b6b;
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.favorites-pagination .swiper-pagination-bullet-active {
+  background-color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* Paper effect */
+.paper-effect {
+  position: relative;
+  height: 40px;
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+.paper-effect-yellow {
+  background-image: url("/torn-paper-yellow.svg");
+}
+
+.paper-effect-dark {
+  background-image: url("/torn-paper-black.svg");
+}
+
+/* Custom scroll for filters */
+.filters-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary-color) var(--background);
+}
+
+.filters-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.filters-scroll::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+.filters-scroll::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #fff !important;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
