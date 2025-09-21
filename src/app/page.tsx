@@ -18,12 +18,6 @@ export default async function Home() {
     id: item?._id,
   }));
 
-  const mainPost = posts[0];
-  if (mainPost?.attributes?.seo) {
-    metadata.title = mainPost.attributes.seo.metaTitle;
-    metadata.description = mainPost.attributes.seo.metaDescription;
-  }
-
   return (
     <>
       <Slider posts={posts} />

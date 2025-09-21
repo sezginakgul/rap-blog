@@ -1,8 +1,25 @@
 import type { NextConfig } from "next";
+import path from "path";
 
-const nextConfig: NextConfig = {
+interface NextConfigWithTurbopack extends NextConfig {
+  turbopack?: {
+    root?: string;
+    [key: string]: unknown;
+  };
+}
+
+const nextConfig: NextConfigWithTurbopack = {
   images: {
-    domains: ['res.cloudinary.com'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/**",
+      },
+    ],
+  },
+  turbopack: {
+    root: path.resolve(__dirname),
   },
 };
 

@@ -11,7 +11,7 @@ interface PostPageProps {
 }
 
 export async function generateMetadata({ params }: PostPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const posts = await import("@/data/mockData.json").then((m) => m.default);
   const post = posts.find((p: Post) => {
     const normalizedPostSlug = p.attributes.slug
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: PostPageProps) {
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const posts: Post[] = mockData;
 
   const post = posts.find((p: Post) => {
