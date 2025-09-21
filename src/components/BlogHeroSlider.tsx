@@ -106,7 +106,6 @@ const BlogHeroSlider = ({ posts }: BlogHeroSliderProps) => {
             <div className="flex flex-col md:flex-row md:items-center md:justify-between">
               <p className="text-black text-lg font-bold uppercase line-clamp-1">
                 {featuredPosts[currentSlide]?.attributes.desc}
-                ...
               </p>
 
               <div className="flex space-x-2">

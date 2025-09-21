@@ -47,7 +47,7 @@ const Slider = ({ posts }: SliderProps) => {
         loop={true}
         className="h-full custom-swiper"
       >
-        {slides.map((slide) => (
+        {slides.slice(0, 3).map((slide) => (
           <SwiperSlide key={slide.id}>
             <div className="relative w-full h-full">
               <div
@@ -64,12 +64,12 @@ const Slider = ({ posts }: SliderProps) => {
               </div>
 
               <div className="container mx-auto h-full flex flex-col justify-center items-end relative z-10">
-                <div className="px-6 md:px-8 lg:px-10 text-white max-w-[600px] text-left">
-                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 uppercase leading-tight">
+                <div className="px-6 md:px-8 lg:px-10 text-white max-w-[800px] text-left">
+                  <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-2 uppercase">
                     {slide.title}
                   </h1>
-                  <p className="text-sm md:text-base lg:text-lg mb-8">
-                    {slide.description.substring(0, 100)}...
+                  <p className="text-sm md:text-base lg:text-lg mb-2 line-clamp-1">
+                    {slide.description}
                   </p>
 
                   <ActionButton
